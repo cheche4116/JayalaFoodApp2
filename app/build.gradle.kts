@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 android {
@@ -25,13 +26,14 @@ android {
         }
     }
 
-    buildFeatures { compose = true }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.13"
+    buildFeatures {
+        compose = true
     }
 
-    kotlinOptions { jvmTarget = "17" }
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -50,6 +52,5 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
 
-    // Coil para imágenes de internet
     implementation("io.coil-kt:coil-compose:2.6.0")
 }
