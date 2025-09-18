@@ -13,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.jayalafoodapp.feature.home.components.HeaderSection
 
 @Composable
 fun HomeScreen() {
@@ -24,6 +25,8 @@ fun HomeScreen() {
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 16.dp, vertical = 12.dp)
         ) {
+            HeaderSection(userName = "Josué")
+            Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = "Nuestras categorías",
                 style = MaterialTheme.typography.headlineMedium
