@@ -36,7 +36,7 @@ fun HomeScreen() {
             verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
             item {
-                HeaderSection(userName = "Daniel")
+                HeaderSection(userName = "Josue")
             }
             item {
                 Text(
