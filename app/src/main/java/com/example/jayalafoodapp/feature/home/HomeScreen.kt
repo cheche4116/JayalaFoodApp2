@@ -1,5 +1,6 @@
 package com.example.jayalafoodapp.feature.home
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,7 +19,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.jayalafoodapp.feature.home.components.CategoryItem
 import com.example.jayalafoodapp.feature.home.components.HeaderSection
+import com.example.jayalafoodapp.feature.home.components.RestaurantItem
 import com.example.jayalafoodapp.feature.home.mock.CategoriesMock
+import com.example.jayalafoodapp.feature.home.mock.RestaurantsMock
 import com.example.jayalafoodapp.ui.theme.JayalaFoodAppTheme
 
 @Composable
@@ -31,7 +34,7 @@ fun HomeScreen() {
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 16.dp, vertical = 12.dp)
         ) {
-            HeaderSection(userName = "Josué")
+            HeaderSection(userName = "Daniel")
             Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = "Nuestras categorías",
@@ -39,7 +42,7 @@ fun HomeScreen() {
             )
             Spacer(modifier = Modifier.height(12.dp))
             LazyRow(
-                horizontalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(12.dp)
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 items(CategoriesMock.items) { category ->
                     CategoryItem(category = category)
@@ -50,6 +53,14 @@ fun HomeScreen() {
                 text = "Busca los mejores restaurantes",
                 style = MaterialTheme.typography.headlineMedium
             )
+            Spacer(modifier = Modifier.height(12.dp))
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                items(RestaurantsMock.items) { restaurant ->
+                    RestaurantItem(restaurant = restaurant)
+                }
+            }
             Spacer(modifier = Modifier.height(24.dp))
             Text(
                 text = "Nuestras mejores comidas",
