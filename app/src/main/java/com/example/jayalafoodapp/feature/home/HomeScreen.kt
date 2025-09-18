@@ -1,15 +1,13 @@
 package com.example.jayalafoodapp.feature.home
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -32,54 +30,57 @@ import com.example.jayalafoodapp.ui.theme.JayalaFoodAppTheme
 @Composable
 fun HomeScreen() {
     Scaffold { innerPadding ->
-        Column(
-            modifier = Modifier
-                .padding(innerPadding)
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())
-                .padding(horizontal = 16.dp, vertical = 12.dp)
+        LazyColumn(
+            modifier = Modifier.padding(innerPadding),
+            contentPadding = PaddingValues(16.dp),
+            verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
-            HeaderSection(userName = "Daniel")
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(
-                text = "Nuestras categorías",
-                style = MaterialTheme.typography.headlineMedium
-            )
-            Spacer(modifier = Modifier.height(12.dp))
-            LazyRow(
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                items(CategoriesMock.items) { category ->
-                    CategoryItem(category = category)
+            item {
+                HeaderSection(userName = "Daniel")
+            }
+            item {
+                Text(
+                    text = "Nuestras categorías",
+                    style = MaterialTheme.typography.headlineMedium
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                LazyRow(
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    items(CategoriesMock.items) { category ->
+                        CategoryItem(category = category)
+                    }
                 }
             }
-            Spacer(modifier = Modifier.height(24.dp))
-            Text(
-                text = "Busca los mejores restaurantes",
-                style = MaterialTheme.typography.headlineMedium
-            )
-            Spacer(modifier = Modifier.height(12.dp))
-            LazyRow(
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                items(RestaurantsMock.items) { restaurant ->
-                    RestaurantItem(restaurant = restaurant)
+            item {
+                Text(
+                    text = "Busca los mejores restaurantes",
+                    style = MaterialTheme.typography.headlineMedium
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                LazyRow(
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    items(RestaurantsMock.items) { restaurant ->
+                        RestaurantItem(restaurant = restaurant)
+                    }
                 }
             }
-            Spacer(modifier = Modifier.height(24.dp))
-            Text(
-                text = "Nuestras mejores comidas",
-                style = MaterialTheme.typography.headlineMedium
-            )
-            Spacer(modifier = Modifier.height(12.dp))
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(2),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
-                modifier = Modifier.height(600.dp)
-            ) {
-                items(FoodsMock.items) { food ->
-                    FoodCard(food = food)
+            item {
+                Text(
+                    text = "Nuestras mejores comidas",
+                    style = MaterialTheme.typography.headlineMedium
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(2),
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    modifier = Modifier.height(600.dp)
+                ) {
+                    items(FoodsMock.items) { food ->
+                        FoodCard(food = food)
+                    }
                 }
             }
         }
