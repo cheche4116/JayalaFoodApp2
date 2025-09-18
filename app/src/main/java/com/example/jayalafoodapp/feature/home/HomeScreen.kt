@@ -10,6 +10,9 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -18,9 +21,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.jayalafoodapp.feature.home.components.CategoryItem
+import com.example.jayalafoodapp.feature.home.components.FoodCard
 import com.example.jayalafoodapp.feature.home.components.HeaderSection
 import com.example.jayalafoodapp.feature.home.components.RestaurantItem
 import com.example.jayalafoodapp.feature.home.mock.CategoriesMock
+import com.example.jayalafoodapp.feature.home.mock.FoodsMock
 import com.example.jayalafoodapp.feature.home.mock.RestaurantsMock
 import com.example.jayalafoodapp.ui.theme.JayalaFoodAppTheme
 
@@ -66,6 +71,17 @@ fun HomeScreen() {
                 text = "Nuestras mejores comidas",
                 style = MaterialTheme.typography.headlineMedium
             )
+            Spacer(modifier = Modifier.height(12.dp))
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                modifier = Modifier.height(600.dp)
+            ) {
+                items(FoodsMock.items) { food ->
+                    FoodCard(food = food)
+                }
+            }
         }
     }
 }
